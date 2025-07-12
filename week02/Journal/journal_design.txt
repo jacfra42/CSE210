@@ -1,0 +1,19 @@
+Journal:
+Add Entry
+Display Entries
+Save to File
+Load File
+
+_entries
+
+Entry:
+Display
+
+_date
+_prompt
+_entry
+
+PromptGenerator:
+RandomPrompt
+
+_prompts
