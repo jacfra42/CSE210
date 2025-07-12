@@ -33,6 +33,9 @@ class Program
                 Console.WriteLine("Enter file name: ");
                 string file = Console.ReadLine();
                 myJournal.LoadFromFile(file);
+                int streak = myJournal.GetStreak();
+                Console.WriteLine($"\nYou have written in your journal {streak} days in a row!\n");
+                // Added a method to the Journal class to see how many days in a row the journal has been written in.
             }
             if (input == "4")
             {

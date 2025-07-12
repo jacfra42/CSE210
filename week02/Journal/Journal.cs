@@ -1,4 +1,7 @@
+using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
@@ -45,5 +48,27 @@ public class Journal
             newEntry._entryText = parts[2];
             _entries.Add(newEntry);
         }
+    }
+    public int GetStreak()
+    {
+        List<string> dates = new List<string>();
+        foreach (Entry entry in _entries)
+        {
+            dates.Add(entry._date);
+        }
+        var streakDates = dates.Select(date => DateTime.ParseExact(date, "M/d/yyyy", null)).Distinct().OrderByDescending(d => d).ToList();
+        int streak = 1;
+        for (int i = 1; i < streakDates.Count; i++)
+        {
+            if ((streakDates[i - 1] - streakDates[i]).Days == 1)
+            {
+                streak++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        return streak;
     }
 }
